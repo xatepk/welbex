@@ -1,13 +1,15 @@
 import { TableHeader } from './TableHeader';
 import { TableRow } from './TableRow';
 
-export const Table = ({ data }) => {
+export const Table = ({ data, isSorted }) => {
   // console.log(data);
   // debugger;
   return (
-    <div className="table">
-      <TableHeader />
-      {data.map((row, idx) => <TableRow row={row} key={idx}/>)}
-    </div>
+    <table className="table">
+      <TableHeader isSorted={isSorted} />
+      <tbody>
+       {data.map((row, idx) => <TableRow row={row} key={idx}/>)}
+      </tbody>
+    </table>
   )
 }

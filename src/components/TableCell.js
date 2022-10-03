@@ -1,5 +1,5 @@
-export const TableCell = ({type, item }) => {
+export const TableCell = ({ item }) => {
   return(
-    <input type={type}></input>
+    <td className="table__cell">{item}</td>
   )
 }

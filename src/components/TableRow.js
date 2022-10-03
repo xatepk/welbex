@@ -2,15 +2,14 @@ import { TableCell } from "./TableCell"
 
 export const TableRow = ({ row, key }) => {
 
-  const { date, title, amount, distance } = row;
-  console.log(title);
+  const { 0:date, 1:title, 2:amount, 3:distance } = row;
 
   return (
-    <div className="table__row">
-      <TableCell className="table__cell" type={'date'} item={date} index={key} />
-      <TableCell className="table__cell" type={'text'} item={title} index={key} />
-      <TableCell className="table__cell" type={'text'} item={amount} index={key} />
-      <TableCell className="table__cell" type={'text'} item={distance} index={key} />
-    </div>
+    <tr className="table__row" key={key}>
+      <TableCell item={date} />
+      <TableCell item={title} />
+      <TableCell item={amount} />
+      <TableCell item={distance} />
+    </tr>
   )
 }

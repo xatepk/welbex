@@ -1,31 +1,27 @@
-export const data = [
+export const tableData = [
   {
-    id: 1,
-    date: Date('01112011'),
-    title: "New York",
-    amount: 20,
-    distance: 300
+    0: '01112011',
+    1: "New York",
+    2: 20,
+    3: 300
   },
   {
-    id: 2,
-    date: Date('02102011'),
-    title: "Arizona",
-    amount: 16,
-    distance: 450
+    0: '02102011',
+    1: "Arizona",
+    2: 16,
+    3: 450
   },
   {
-    id: 3,
-    date: Date('03072015'),
-    title: "Main",
-    amount: 66,
-    distance: 500
+    0: '03072015',
+    1: "Main",
+    2: 66,
+    3: 500
   },
   {
-    id: 4,
-    date: Date('04062017'),
-    title: "LA",
-    amount: 55,
-    distance: 600
+    0: '04062017',
+    1: "LA",
+    2: 55,
+    3: 600
   },
 
 ]
