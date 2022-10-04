@@ -1,5 +1,6 @@
 .table {
   width: 800px;
+  margin: 15px auto;
 }
 
 .table__row {
@@ -16,3 +17,69 @@
   width: 200px;
   box-sizing: border-box;
 }
+
+.table__header-sort {
+  position: relative;
+}
+
+.table__header-sort::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 10px;
+  height: 10px;
+  background: linear-gradient(to left bottom, transparent 50%, rgb(220, 220, 220) 50%) right / 50% 100% no-repeat, linear-gradient(to right bottom, transparent 50%, rgb(220, 220, 220) 50%) left / 50% 100% no-repeat;
+  display: inline-block;
+  content: '';
+}
+
+.table__header-sort::before {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 10px;
+  height: 10px;
+  background: linear-gradient(to right top, transparent 50%, rgb(220, 220, 220) 50%) left / 50% 100% no-repeat, linear-gradient(to left top, transparent 50%, rgb(220, 220, 220) 50%) right / 50% 100% no-repeat;
+  display: inline-block;
+  content: '';
+}
+
+
+.page-link {
+  color: black;
+}
+
+.pagination {
+  width: 800px;
+  margin: auto;
+}
+
+.filter {
+  width: 800px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.filter__button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.input-field {
+  margin-right: 10px;
+}
+
+.input-field:last-of-type {
+  margin-right: 0;
+}
+
+.btn-small {
+  margin-left: 5px;
+  display: flex;
+  justify-content: center;
+}
+
+

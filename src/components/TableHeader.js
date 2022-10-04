@@ -1,16 +1,20 @@
-export const TableHeader = ({ isSorted }) => {
-  const sortHandler = (e) => {
-    e.preventDefault();
-    isSorted(e.target.cellIndex);
-  }
+import { columnName } from "../data/data";
+import { TableHeaderCell } from "./TableHeaderCell";
+
+export const TableHeader = ({ doSort }) => {
+
 
   return (
     <thead className="table__row table__row-header">
       <tr>
-        <th className="table__cell">Дата</th>
-        <th className="table__cell" onClick={sortHandler}>Название</th>
-        <th className="table__cell" onClick={sortHandler}>Количество</th>
-        <th className="table__cell" onClick={sortHandler}>Расстояние</th>
+        {columnName.map((v, i) =>
+          <TableHeaderCell
+            key={i}
+            isSortable={i !== 0}
+            name={v}
+            doSort={doSort}
+          />
+        )}
       </tr>
     </thead>
   )
