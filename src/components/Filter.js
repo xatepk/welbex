@@ -11,7 +11,7 @@ export const Filter = ({ doFilter }) => {
   useEffect(() => {
     if (value && nameValue && contidionValue) {
       doFilter(value, nameValue, contidionValue);
-    }
+    } 
   },[value, nameValue, contidionValue])
 
 

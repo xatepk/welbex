@@ -7,6 +7,7 @@ import { tableData } from '../data/data';
 import { Table } from './Table';
 import { Navbar } from './NavBar';
 import { Filter } from './Filter';
+import { filter } from '../helper/helper';
 
 function App() {
   // const { data, loading, error } = useData();
@@ -30,42 +31,17 @@ function App() {
 
   const sortHandler = (cell) => {
     let sortedRows = data.sort((rowA, rowB) => rowA[cell] > rowB[cell] ? 1: -1);
-    // console.log(sortedRows);
     setData(sortedRows);
     setCurrentRows(sortedRows.slice(indexOfFirstRow, indexOfLastRow));
-    // setData(sortedRows);
   }
 
   const paginateHandler = (pageNumber) => setCurrentPage(pageNumber);
 
   const filterHandler = (value, nameValue, contidionValue) => {
     setCurrentPage(1);
-    console.log(tableData);
-    const lowerTerm = value.toLowerCase();
-    let filterRows = [];
-    // debugger;
-    if(contidionValue === 'equals') {
-      filterRows = tableData.filter((item) => {
-              const lowerName = String(item[nameValue]).toLowerCase();
-              return lowerName === lowerTerm;
-            });
-    } else if(contidionValue === 'contains'){
-      filterRows = tableData.filter((item) => {
-              const lowerName = String(item[nameValue]).toLowerCase();
-              return lowerName.indexOf(lowerTerm) > -1;
-      });
-    }
+    const { filterRows } = filter(value, nameValue, contidionValue, tableData);
     setData(filterRows);
     setCurrentRows(filterRows.slice(indexOfFirstRow, indexOfLastRow));
-      // case 'more':
-      //   return
-      // case 'less':
-      //   return
-
-      // default:
-      //   return data;
-    // }
-
   }
 
 
