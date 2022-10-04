@@ -1,5 +1,3 @@
-import React from 'react';
-
 export const filter = (value, nameValue, contidionValue, tableData) => {
   const lowerTerm = value.toLowerCase();
   let filterRows = [];
