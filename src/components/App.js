@@ -57,17 +57,6 @@ function App() {
     }
     setData(filterRows);
     setCurrentRows(filterRows.slice(indexOfFirstRow, indexOfLastRow));
-    // switch (contidionValue) {
-    //   case 'equals':
-    //     return data.filter((item) => {
-    //       const lowerName = String(item[nameValue]).toLowerCase();
-    //       return lowerName === lowerTerm;
-    //     });
-    //   case 'contains':
-    //     return data.filter((item) => {
-    //       const lowerName = String(item[nameValue]).toLowerCase();
-    //       return lowerName.indexOf(lowerTerm) > -1;
-    //     });
       // case 'more':
       //   return
       // case 'less':
