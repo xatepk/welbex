@@ -82,4 +82,24 @@
   justify-content: center;
 }
 
+.error {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.table__cell_hover:hover {
+  cursor: pointer;
+}
+
+.table__cell_hover:hover:first-of-type {
+  cursor: default;
+}
+
 

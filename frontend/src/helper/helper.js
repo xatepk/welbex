@@ -1,5 +1,4 @@
 export const filter = (value, nameValue, contidionValue, tableData) => {
-  // debugger;
   const lowerTerm = String(value).toLowerCase();
   let filterRows = [];
   if(contidionValue === 'equals') {
@@ -28,4 +27,15 @@ export const filter = (value, nameValue, contidionValue, tableData) => {
 
   return { filterRows }
 
+}
+
+export const sorted = (data, cell, ask) => {
+  let sortedRows = [];
+  if (ask) {
+    sortedRows = data.sort((rowA, rowB) => rowA[Object.keys(rowA)[cell]] > rowB[Object.keys(rowB)[cell]] ? 1: -1);
+  } else {
+    sortedRows = data.sort((rowA, rowB) => rowA[Object.keys(rowA)[cell]] < rowB[Object.keys(rowB)[cell]] ? 1: -1);
+  }
+
+  return { sortedRows }
 }

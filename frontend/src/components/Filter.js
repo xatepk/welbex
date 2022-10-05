@@ -7,9 +7,7 @@ export const Filter = ({ doFilter }) => {
   const [contidionValue, setContidionValue] = useState('');
 
   useEffect(() => {
-    if (value && nameValue && contidionValue) {
-      doFilter(value, nameValue, contidionValue);
-    }
+    doFilter(value, nameValue, contidionValue);
   },[value, nameValue, contidionValue])
 
 
@@ -20,7 +18,7 @@ export const Filter = ({ doFilter }) => {
               className="browser-default"
               required
               onChange={(e) => setNameValue(e.target.value)}>
-        <option value="" disabled selected>Выбор колонки</option>
+        <option value="" disabled>Выбор колонки</option>
         {columnName.map((name, i) => <option key={i} value={i}>{name}</option>)}
       </select>
       </div>
@@ -29,7 +27,7 @@ export const Filter = ({ doFilter }) => {
               className="browser-default"
               required
               onChange={(e) => setContidionValue(e.target.value)}>
-        <option value="" disabled selected>Выбор условия</option>
+        <option value="" disabled>Выбор условия</option>
         <option value="equals">Равно</option>
         <option value="contains">Содержит</option>
         <option value="more">Больше</option>
