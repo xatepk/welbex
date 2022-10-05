@@ -29,13 +29,38 @@ export const filter = (value, nameValue, contidionValue, tableData) => {
 
 }
 
-export const sorted = (data, cell, ask) => {
-  let sortedRows = [];
-  if (ask) {
-    sortedRows = data.sort((rowA, rowB) => rowA[Object.keys(rowA)[cell]] > rowB[Object.keys(rowB)[cell]] ? 1: -1);
-  } else {
-    sortedRows = data.sort((rowA, rowB) => rowA[Object.keys(rowA)[cell]] < rowB[Object.keys(rowB)[cell]] ? 1: -1);
+export const switchDirection = (direction) => {
+  switch(direction) {
+    case 'ASC': {
+      return 'DESC';
+    }
+    case 'DESC': {
+      return 'NONE';
+    }
+    case 'NONE': {
+      return 'ASC';
+    }
   }
+}
 
-  return { sortedRows }
+const typeUtil = (value) => {
+  if (typeof value === 'number') {
+    return value;
+  }
+  return value.toLowerCase();
+}
+
+export const sortData = (data, { field, direction }) => {
+  const sorted = [...data];
+  switch(direction) {
+    case 'ASC': {
+      return sorted.sort((rowA, rowB) => typeUtil(rowA[field]) > typeUtil(rowB[field]) ? 1: -1);
+    }
+    case 'DESC': {
+      return sorted.sort((rowA, rowB) => typeUtil(rowA[field]) < typeUtil(rowB[field]) ? 1: -1);
+    }
+    default: {
+      return data;
+    }
+  }
 }

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { columnName } from '../data/data';
+
+import { columnsNames } from '../constants/constants';
 
 export const Filter = ({ doFilter }) => {
   const [value, setValue] = useState('');
@@ -10,7 +11,6 @@ export const Filter = ({ doFilter }) => {
     doFilter(value, nameValue, contidionValue);
   },[value, nameValue, contidionValue])
 
-
   return(
     <div className="filter">
       <div className="input-field col s12">
@@ -19,7 +19,7 @@ export const Filter = ({ doFilter }) => {
               required
               onChange={(e) => setNameValue(e.target.value)}>
         <option value="" disabled>Выбор колонки</option>
-        {columnName.map((name, i) => <option key={i} value={i}>{name}</option>)}
+        {columnsNames.map((name, i) => <option key={i} value={i}>{name}</option>)}
       </select>
       </div>
       <div className="input-field col s12">
@@ -44,7 +44,5 @@ export const Filter = ({ doFilter }) => {
         </input>
       </div>
     </div>
-
-
   )
 }

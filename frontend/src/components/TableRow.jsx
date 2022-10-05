@@ -1,9 +1,11 @@
-import { TableCell } from "./TableCell"
+import React from 'react';
+
+import { TableCell } from './TableCell'
 
 export const TableRow = ({ row }) => {
 
   const { date, title, amount, distance } = row;
-  
+
   const dateFormat = date.slice(0,10);
 
   return (
