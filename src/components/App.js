@@ -3,15 +3,15 @@ import { Pagination } from './Pagination';
 import { Loader } from './Loader';
 import { ErrorMessage } from './ErrorMessage';
 // import { useData } from '../hooks/hooks';
-import { tableData } from '../data/data';
+// import { tableData } from '../data/data';
 import { Table } from './Table';
 import { Navbar } from './NavBar';
 import { Filter } from './Filter';
 import { filter } from '../helper/helper';
+import { useData } from '../hooks/hooks';
 
 function App() {
-  // const { data, loading, error } = useData();
-  const [data, setData] = useState([]);
+  const { data, loading, error, setData, dataManual } = useData();
   const [currentPage, setCurrentPage] = useState(1);
   const [rowsPerPage] = useState(5);
   let [currentRows, setCurrentRows] = useState([])
@@ -22,15 +22,8 @@ function App() {
   currentRows = data.slice(indexOfFirstRow, indexOfLastRow);
 
 
-  const loading = false;
-  const error = false;
-
-  useEffect(() => {
-    setData(tableData);
-  },[])
-
   const sortHandler = (cell) => {
-    let sortedRows = data.sort((rowA, rowB) => rowA[cell] > rowB[cell] ? 1: -1);
+    let sortedRows = data.sort((rowA, rowB) => rowA[Object.keys(rowA)[cell]] > rowB[Object.keys(rowB)[cell]] ? 1: -1);
     setData(sortedRows);
     setCurrentRows(sortedRows.slice(indexOfFirstRow, indexOfLastRow));
   }
@@ -39,7 +32,7 @@ function App() {
 
   const filterHandler = (value, nameValue, contidionValue) => {
     setCurrentPage(1);
-    const { filterRows } = filter(value, nameValue, contidionValue, tableData);
+    const { filterRows } = filter(value, nameValue, contidionValue, dataManual);
     setData(filterRows);
     setCurrentRows(filterRows.slice(indexOfFirstRow, indexOfLastRow));
   }

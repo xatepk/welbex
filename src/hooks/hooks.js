@@ -3,15 +3,17 @@ import axios from "axios";
 
 export function useData() {
   const [data, setData] = useState([]);
+  const [dataManual, setDataManual] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('')
+  const [error, setError] = useState('');
 
-  async function fetchProducts() {
+  async function fetchData() {
     try {
       setError('')
       setLoading(true);
-      const responce = await axios.get('https://fakestoreapi.com/products');
-      setData(responce.data)
+      const responce = await axios.get('http://localhost:3000/data');
+      setData(responce.data);
+      setDataManual(responce.data);
       setLoading(false);
 
     } catch (e) {
@@ -23,8 +25,8 @@ export function useData() {
   }
 
   useEffect(() => {
-    fetchProducts();
+    fetchData();
   },[])
 
-  return { data, loading, error }
+  return { data, loading, error, setData, dataManual }
 }

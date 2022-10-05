@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { columnName } from '../data/data';
-import { ErrorMessage } from './ErrorMessage';
 
 export const Filter = ({ doFilter }) => {
-  const [error, setError] = useState('');
   const [value, setValue] = useState('');
   const [nameValue, setNameValue] = useState('');
   const [contidionValue, setContidionValue] = useState('');
@@ -11,7 +9,7 @@ export const Filter = ({ doFilter }) => {
   useEffect(() => {
     if (value && nameValue && contidionValue) {
       doFilter(value, nameValue, contidionValue);
-    } 
+    }
   },[value, nameValue, contidionValue])
 
 
@@ -46,7 +44,6 @@ export const Filter = ({ doFilter }) => {
             value={value}
             onChange={(e) => setValue(e.target.value)}>
         </input>
-        {error && <ErrorMessage error={error} />}
       </div>
     </div>
 

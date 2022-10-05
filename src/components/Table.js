@@ -2,8 +2,7 @@ import { TableHeader } from './TableHeader';
 import { TableRow } from './TableRow';
 
 export const Table = ({ data, doSort }) => {
-  // console.log(data);
-  // debugger;
+ 
   return (
     <table className="table">
       <TableHeader doSort={doSort} />

@@ -4,8 +4,6 @@ export const TableHeaderCell = ({ isSortable, name, doSort }) => {
 
   const sortHandler = (e) => {
 
-    console.log(e.target.cellIndex);
-    // e.preventDefault();
     if (isSortable) {
       doSort(e.target.cellIndex);
     }
