@@ -9,7 +9,7 @@ export const Pagination = ({ rowsPerPage, totalRows, paginate, currentPage }) =>
 
   return(
     <nav>
-      <ul className="pagination">
+      { rowsPerPage < totalRows && <ul className="pagination">
         {pageNumbers.map((number) => (
           <li className="page-item" key={number}>
             <a className={`page-link ${currentPage === number ? 'active' : ''}`} onClick={() => paginate(number)} href="!#">
@@ -17,7 +17,7 @@ export const Pagination = ({ rowsPerPage, totalRows, paginate, currentPage }) =>
             </a>
           </li>
         ) )}
-      </ul>
+      </ul>}
     </nav>
   )
 }

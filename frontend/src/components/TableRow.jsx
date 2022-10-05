@@ -6,11 +6,9 @@ export const TableRow = ({ row }) => {
 
   const { date, title, amount, distance } = row;
 
-  const dateFormat = date.slice(0,10);
-
   return (
     <tr className="table__row">
-      <TableCell item={dateFormat} />
+      <TableCell item={new Date(date).toLocaleDateString()} />
       <TableCell item={title} />
       <TableCell item={amount} />
       <TableCell item={distance} />

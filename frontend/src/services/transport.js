@@ -1,11 +1,10 @@
 import axios from 'axios';
 
 export async function getData() {
-  console.log('get data');
-    try {
-      const response = await axios.get('http://localhost:3000/data');
-      return response.data;
-    } catch (e) {
-      throw new Error(e);
-    }
+  try {
+    const response = await axios.get('http://localhost:3000/data');
+    return response.data;
+  } catch (e) {
+    throw new Error(e);
+  }
 }

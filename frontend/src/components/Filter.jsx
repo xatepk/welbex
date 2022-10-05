@@ -1,32 +1,32 @@
 import React, { useEffect, useState } from 'react';
 
-import { columnsNames } from '../constants/constants';
+import { columnsNames, rowItemMapping } from '../constants/constants';
 
 export const Filter = ({ doFilter }) => {
   const [value, setValue] = useState('');
-  const [nameValue, setNameValue] = useState('');
-  const [contidionValue, setContidionValue] = useState('');
+  const [namespace, setNamespace] = useState('');
+  const [condition, setCondition] = useState('');
 
   useEffect(() => {
-    doFilter(value, nameValue, contidionValue);
-  },[value, nameValue, contidionValue])
+    doFilter({ value, namespace, condition });
+  },[value, namespace, condition])
 
   return(
     <div className="filter">
       <div className="input-field col s12">
-      <select defaultValue={nameValue}
+      <select defaultValue={namespace}
               className="browser-default"
               required
-              onChange={(e) => setNameValue(e.target.value)}>
+              onChange={(e) => setNamespace(e.target.value)}>
         <option value="" disabled>Выбор колонки</option>
-        {columnsNames.map((name, i) => <option key={i} value={i}>{name}</option>)}
+        {columnsNames.map((name, i) => <option key={i} value={rowItemMapping[i === 0 ? 4 : i]}>{name}</option>)}
       </select>
       </div>
       <div className="input-field col s12">
-      <select defaultValue={contidionValue}
+      <select defaultValue={condition}
               className="browser-default"
               required
-              onChange={(e) => setContidionValue(e.target.value)}>
+              onChange={(e) => setCondition(e.target.value)}>
         <option value="" disabled>Выбор условия</option>
         <option value="equals">Равно</option>
         <option value="contains">Содержит</option>

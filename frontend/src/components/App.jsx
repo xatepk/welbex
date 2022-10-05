@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useMemo } from 'react';
+import { useCallback } from 'react';
 
 import { rowItemMapping } from '../constants/constants';
-import { filter, sortData } from '../helper/utils';
-// import { getData } from '../hooks/hooks';
+import { filterData, sortData } from '../helper/utils';
 import { getData } from '../services/transport';
 import { ErrorMessage } from './ErrorMessage';
 import { Filter } from './Filter';
@@ -20,6 +20,11 @@ function App() {
   const [error, setError] = useState('');
 
   const [rowsPerPage] = useState(5);
+  const [filtering, setFiltering] = useState({
+    namespace: '',
+    condition: '',
+    value: ''
+  });
   const [sorting, setSorting] = useState({
     field: rowItemMapping[0],
     direction: 'NONE',
@@ -43,6 +48,8 @@ function App() {
   const indexOfLastRow = useMemo(() => currentPage * rowsPerPage, [currentPage, rowsPerPage]);
   const indexOfFirstRow = useMemo(() => indexOfLastRow - rowsPerPage, [indexOfLastRow, rowsPerPage]);
 
+  const resetCurrentPage = useCallback(() => setCurrentPage(1), []);
+
   useEffect(() => {
     const sortedData = sortData(rawData, sorting)
     setData(sortedData);
@@ -53,18 +60,12 @@ function App() {
     setCurrentRows(data.slice(indexOfFirstRow, indexOfLastRow));
   }, [indexOfFirstRow, indexOfLastRow]);
 
-  const filterHandler = (value, nameValue, contidionValue) => {
-    if (value && nameValue && contidionValue) {
-      setCurrentPage(1);
-      const { filterRows } = filter(value, nameValue, contidionValue, rawData);
-      setData(filterRows);
-      setCurrentRows(filterRows.slice(indexOfFirstRow, indexOfLastRow));
-    } else {
-      setData(rawData);
-      setCurrentRows(rawData.slice(indexOfFirstRow, indexOfLastRow));
-    }
-  }
-
+  useEffect(() => {
+    resetCurrentPage();
+    const filteredRows = filterData(rawData, filtering);
+    setData(filteredRows);
+    setCurrentRows(filteredRows.slice(indexOfFirstRow, indexOfLastRow));
+  }, [filtering]);
 
   return (
     <div className="page">
@@ -74,7 +75,7 @@ function App() {
           <Navbar />
           {!rawData.length && initialized ? <Loader /> : (
             <>
-              <Filter doFilter={filterHandler}/>
+              <Filter doFilter={setFiltering}/>
               <Table data={currentRows} sorting={sorting} doSort={setSorting} />
             </>
           )}
