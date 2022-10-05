@@ -16,6 +16,7 @@
   border: 1px solid #999;
   width: 200px;
   box-sizing: border-box;
+  position: relative;
 }
 
 .table__header-sort {
@@ -102,4 +103,67 @@
   cursor: default;
 }
 
+.table__cell_sorting::after {
+  content: ' ';
+  position: absolute;
+  right: 10px;
+  bottom: 6px;
+  width: 10px;
+  height: 10px;
+  clip-path: polygon(0% 0%, 50% 100%, 100% 0%);
+  background-color: #ccc;
+}
 
+.table__cell_sorting::before {
+  content: ' ';
+  position: absolute;
+  right: 10px;
+  top: 6px;
+  width: 10px;
+  height: 10px;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  background-color: #ccc;
+}
+
+.table__cell_sorting-desc::after {
+  content: ' ';
+  position: absolute;
+  right: 10px;
+  bottom: 6px;
+  width: 10px;
+  height: 10px;
+  clip-path: polygon(0% 0%, 50% 100%, 100% 0%);
+  background-color: #000;
+}
+
+.table__cell_sorting-desc::before {
+  content: ' ';
+  position: absolute;
+  right: 10px;
+  top: 6px;
+  width: 10px;
+  height: 10px;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  background-color: #ccc;
+}
+
+.table__cell_sorting-asc::after {
+  content: ' ';
+  position: absolute;
+  right: 10px;
+  bottom: 6px;
+  width: 10px;
+  height: 10px;
+  clip-path: polygon(0% 0%, 50% 100%, 100% 0%);
+  background-color: #ccc;
+}
+.table__cell_sorting-asc::before {
+  content: ' ';
+  position: absolute;
+  right: 10px;
+  top: 6px;
+  width: 10px;
+  height: 10px;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  background-color: #000;
+}
